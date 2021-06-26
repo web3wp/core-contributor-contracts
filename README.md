@@ -5,11 +5,11 @@ Installation: `npm install @imtbl/imx-contracts` or `yarn add @imtbl/imx-contrac
 
 | Contract | Public Test (Ropsten) | Production (Mainnet) |
 | ------------- |----|----|
-| IMX Core | [0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef](https://ropsten.etherscan.io/address/0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef) | [0x5FDCCA53617f4d2b9134B29090C87D01058e27e9](https://etherscan.io/address/0x5FDCCA53617f4d2b9134B29090C87D01058e27e9)|
+| Core | [0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef](https://ropsten.etherscan.io/address/0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef) | [0x5FDCCA53617f4d2b9134B29090C87D01058e27e9](https://etherscan.io/address/0x5FDCCA53617f4d2b9134B29090C87D01058e27e9)|
 
 # L2 Minting
 
-Immutable X is the only scaling protocol for NFTs that supports minting assets directly into L2, and having those assets be trustlessly withdrawable to Ethereum L1. To enable this, before you can mint on L2, you need to deploy a L1 contract where these L2-minted assets can be re-minted on L1. Luckily, this is extremely simple: all you need to do is add a hook function to any ERC721 contract to allow Immutable X to mint assets. 
+Immutable X is the only NFT scaling protocol that supports minting assets on L2, and having those assets be trustlessly withdrawable to Ethereum L1. To enable this, before you can mint on L2, you need to deploy an IMX-compatible ERC721 contract as the potential L1 home for these assets. Luckily, making an ERC721 contract IMX-compatible is easy!
 
 ### Basic Usage
 
@@ -29,7 +29,7 @@ contract YourContract is Mintable {
         uint256 id,
         bytes calldata blueprint
     ) internal override {
-        // mint the token using your existing implementation
+        // TODO: mint the token using your existing implementation
     }
 
 }
@@ -50,7 +50,7 @@ contract YourContract is IMintable {
         bytes calldata blueprint
     ) external override {
         // TODO: make sure only Immutable X can call this function
-        // mint the token!
+        // TODO: mint the token!
     }
 
 }
