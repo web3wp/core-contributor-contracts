@@ -1,7 +1,7 @@
 
 # Immutable X Contracts
 
-Installation: `npm install @imtbl/imx-contracts`.
+Installation: `npm install @imtbl/imx-contracts` or `yarn add @imtbl/imx-contracts`.
 
 | Contract | Public Test (Ropsten) | Production (Mainnet) |
 | ------------- |----|----|
@@ -18,7 +18,7 @@ If you're starting from scratch, simply deploy a new instance of `Asset.sol` and
 If you already have an ERC721 contract written, simply add `Mintable.sol` as an ancestor, implement the `_mintFor` function with your internal mint function, and set up the constructor as above: 
 
 ```
-import "@imtbl/contracts/Mintable.sol";
+import "@imtbl/imx-contracts/contracts/Mintable.sol";
 
 contract YourContract is Mintable {
 
@@ -40,7 +40,7 @@ contract YourContract is Mintable {
 To enable L2 minting, your contract must implement the `IMintable.sol` interface with a function which mints the corresponding L1 NFT. This function is `mintFor(address to, uint256 id, bytes blueprint)`. The "blueprint" is the immutable metadata set by the minting application at the time of asset creation. This blueprint can store the IPFS hash of the asset, or some of the asset's properties, or anything a minting application deems valuable. You can use a custom implementation of the `mintFor` function to do whatever you like with the blueprint.
 
 ```
-import "@imtbl/contracts/IMintable.sol";
+import "@imtbl/imx-contracts/contracts/Mintable.sol";
 
 contract YourContract is IMintable {
 
