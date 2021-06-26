@@ -3,9 +3,9 @@
 
 Installation: `npm install @imtbl/contracts`.
 
-| Contract| Public Test (Ropsten) | Production (Mainnet) |
+| Contract | Public Test (Ropsten) | Production (Mainnet) |
 | ------------- |----|----|
-| Immutable X Core | [0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef](https://ropsten.etherscan.io/address/0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef) | [0x5FDCCA53617f4d2b9134B29090C87D01058e27e9](https://etherscan.io/address/0x5FDCCA53617f4d2b9134B29090C87D01058e27e9)|
+| IMX Core | [0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef](https://ropsten.etherscan.io/address/0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef) | [0x5FDCCA53617f4d2b9134B29090C87D01058e27e9](https://etherscan.io/address/0x5FDCCA53617f4d2b9134B29090C87D01058e27e9)|
 
 # L2 Minting
 
