@@ -1,7 +1,7 @@
 
-# Immutable Contracts
+# Immutable X Contracts
 
-Installation: `npm install @imtbl/contracts`.
+Installation: `npm install @imtbl/imx-contracts`.
 
 | Contract | Public Test (Ropsten) | Production (Mainnet) |
 | ------------- |----|----|
