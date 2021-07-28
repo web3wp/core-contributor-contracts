@@ -1,29 +1,49 @@
+const hardhat = require('hardhat');
+const { ethers } = hardhat;
 
-const { ethers } = require("hardhat");
-
+/**
+ * main deploys a smart contract via a call to the deploySmartContract function. To
+ * use this function please ensure your environment file (.env) is configured
+ * with the correct values before invoking this script.
+ */
 async function main() {
     const [deployer] = await ethers.getSigners();
   
-    console.log("Deploying Contracts with the account:", deployer.address);
-    console.log("Account Balance:", (await deployer.getBalance()).toString());
+    console.log('Deploying Contracts with the account: ', deployer.address);
+    console.log('Account Balance: ', (await deployer.getBalance()).toString());
 
     // Use any logic you want to determine these values
     const owner = process.env.CONTRACT_OWNER_ADDRESS;
     const name = process.env.CONTRACT_NAME;
     const symbol = process.env.CONTRACT_SYMBOL;
-  
-    // TODO: allow this to be mainnet as well
-    await deployAsset(owner, name, symbol, 'ropsten');
+
+    await deploySmartContract(owner, name, symbol, hardhat.network.name);
 }
 
-async function deployAsset(owner, name, symbol, network) {
-    const Asset = await ethers.getContractFactory("Asset");
-    const imx_address = getIMXAddress(network);
-    const asset = await Asset.deploy(owner, name, symbol, imx_address);
+/**
+ * deploySmartContract compiles the solidity smart contract from the
+ * contracts folder, and then deploys the contract onto one of the
+ * nominated networks.
+ * 
+ * @param {string} owner - The address of the person that owns the contract
+ * @param {string} name - Friendly name for the contract
+ * @param {string} symbol - Symbol for the contract (e.g. 'GODS')
+ * @param {string} network - ropsten or mainnet
+ */
+async function deploySmartContract(owner, name, symbol, network) {
+    // Hard coded to compile and deploy the Asset.sol smart contract.
+    const SmartContract = await ethers.getContractFactory('Asset');
+    const imxAddress = getIMXAddress(network);
+    const smartContract = await SmartContract.deploy(owner, name, symbol, imxAddress);
   
-    console.log("Deployed Contract Address:", asset.address);
+    console.log('Deployed Contract Address:', smartContract.address);
 }
 
+/**
+ * Returns the IMX address for either network. DO NOT CHANGE these values.
+ * @param {string} network - ropsten or mainnent
+ * @returns {string} IMX address
+ */
 function getIMXAddress(network) {
     switch (network) {
         case 'ropsten':
@@ -31,7 +51,7 @@ function getIMXAddress(network) {
         case 'mainnet':
             return '0x5FDCCA53617f4d2b9134B29090C87D01058e27e9';
     }
-    throw Error('Invalid network selected')
+    throw Error('Invalid network selected');
 }
 
 main()
