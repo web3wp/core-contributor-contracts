@@ -6,10 +6,11 @@ import "./Mintable.sol";
 
 contract Asset is ERC721, Mintable {
     constructor(
+        address _owner,
         string memory _name,
         string memory _symbol,
         address _imx
-    ) ERC721(_name, _symbol) Mintable(_imx) {}
+    ) ERC721(_name, _symbol) Mintable(_owner, _imx) {}
 
     function _mintFor(
         address to,
