@@ -2,9 +2,10 @@
 
 Installation: `npm install @imtbl/imx-contracts` or `yarn add @imtbl/imx-contracts`.
 
-| Name | Public Test (Ropsten)                                                                                                         | Production (Mainnet)                                                                                                  |
-| ---- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Core | [0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef](https://ropsten.etherscan.io/address/0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef) | [0x5FDCCA53617f4d2b9134B29090C87D01058e27e9](https://etherscan.io/address/0x5FDCCA53617f4d2b9134B29090C87D01058e27e9) |
+| Name         | Public Test (Ropsten)                                                                                                         | Production (Mainnet)                                                                                                  |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Core         | [0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef](https://ropsten.etherscan.io/address/0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef) | [0x5FDCCA53617f4d2b9134B29090C87D01058e27e9](https://etherscan.io/address/0x5FDCCA53617f4d2b9134B29090C87D01058e27e9) |
+| Registration | [0x3c789FF38a2116f47526049B22D77BC3e7ac1ff0](https://ropsten.etherscan.io/address/0x3c789FF38a2116f47526049B22D77BC3e7ac1ff0) | [0xF8baF0A0cD647040E4C02C8D4b0cbf94aE0bCD97](https://etherscan.io/address/0xF8baF0A0cD647040E4C02C8D4b0cbf94aE0bCD97) |
 
 # L2 Minting
 
