@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "simple-deploy-ropsten": "npx hardhat run deploy/simple_asset.js --network ropsten"
+    "simple-deploy-ropsten": "npx hardhat run deploy/simple_asset.js --network ropsten",
+    "registration": "npx hardhat run deploy/registration.js --network ropsten"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.1.0",
