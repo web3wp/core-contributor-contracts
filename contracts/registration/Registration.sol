@@ -16,9 +16,19 @@ contract Registration {
         bytes calldata signature,
         uint256 assetType,
         uint256 vaultId
-    ) external {
+    ) external payable {
         imx.registerUser(ethKey, starkKey, signature);
-        imx.deposit(starkKey, assetType, vaultId);
+        // the standard way to write this is: imx.deposit.value(msg.value)(starkKey, assetType, vaultId);
+        // but the Solidity compiler hates the overloading of deposit + the use of .value()
+        (bool success, ) = address(imx).call{value: msg.value}(
+            abi.encodeWithSignature(
+                "deposit(uint256,uint256,uin256)",
+                starkKey,
+                assetType,
+                vaultId
+            )
+        );
+        require(success, "Deposit Failed");
     }
 
     function registerAndDeposit(

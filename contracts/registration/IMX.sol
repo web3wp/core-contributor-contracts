@@ -14,7 +14,7 @@ interface IMX {
         uint256 starkKey,
         uint256 assetType,
         uint256 vaultId
-    ) external;
+    ) external payable;
 
     function deposit(
         uint256 starkKey,
