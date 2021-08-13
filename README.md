@@ -62,3 +62,7 @@ contract YourContract is IMintable, Ownable {
 
 }
 ```
+
+### Generating Typescript Types
+
+Run `yarn compile`. The output can be found in the `artifacts/typechain` folder.
