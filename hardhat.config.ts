@@ -25,7 +25,7 @@ module.exports = {
     target: "ethers-v5",
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_KEY
+    apiKey: process.env.ETHERSCAN_API_KEY
   },
 };
 
