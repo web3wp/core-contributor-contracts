@@ -1,13 +1,14 @@
 
 const { ethers } = require("hardhat");
+const fs = require("fs");
 
 async function main() {
     const [deployer] = await ethers.getSigners();
-  
+
     console.log("Deploying Contracts with the account:", deployer.address);
     console.log("Account Balance:", (await deployer.getBalance()).toString());
 
-    await deploy('mainnet');
+    await deploy(hardhatArguments.network);
 }
 
 async function deploy(network) {
@@ -15,6 +16,7 @@ async function deploy(network) {
     const imx_address = getIMXAddress(network);
     const asset = await Registration.deploy(imx_address);
     console.log("Deployed Contract Address:", asset.address);
+    fs.writeFileSync(`registration-${hardhatArguments.network}-address.txt`, asset.address);
 }
 
 function getIMXAddress(network) {
@@ -28,8 +30,8 @@ function getIMXAddress(network) {
 }
 
 main()
-.then(() => process.exit(0))
-.catch((error) => {
-    console.error(error);
-    process.exit(1);
-});
+    .then(() => process.exit(0))
+    .catch((error) => {
+        console.error(error);
+        process.exit(1);
+    });

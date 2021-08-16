@@ -1,5 +1,6 @@
 import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
+import "@nomiclabs/hardhat-etherscan";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -22,6 +23,9 @@ module.exports = {
   typechain: {
     outDir: "artifacts/typechain",
     target: "ethers-v5",
+  },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_KEY
   },
 };
 
