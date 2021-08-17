@@ -63,6 +63,22 @@ contract YourContract is IMintable, Ownable {
 }
 ```
 
+### Deploying and verifying registration contract
+
+Set `ETHERSCAN_API_KEY` in `.env` file.
+
+Deploy to ropsten, change to mainnet if required
+
+```
+yarn deploy-registration --network ropsten
+```
+
+Validate on ropsten, with ropsten stark contract address. change if required
+
+```
+yarn verify-registration 0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef --network ropsten
+```
+
 ### Generating Typescript Types
 
 Run `yarn compile`. The output can be found in the `artifacts/typechain` folder.

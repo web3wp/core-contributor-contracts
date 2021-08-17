@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "npx hardhat compile",
     "simple-deploy-ropsten": "npx hardhat run deploy/simple_asset.js --network ropsten",
-    "registration": "yarn hardhat run deploy/registration.js",
+    "deploy-registration": "yarn hardhat run deploy/registration.js",
     "verify-registration": "yarn hardhat verify $(cat registration-ropsten-address.txt)"
   },
   "dependencies": {
