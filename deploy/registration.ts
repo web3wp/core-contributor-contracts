@@ -1,6 +1,5 @@
 
-const { ethers } = require("hardhat");
-const fs = require("fs");
+import { ethers, hardhatArguments, run } from "hardhat";
 
 async function main() {
     const [deployer] = await ethers.getSigners();
@@ -8,19 +7,33 @@ async function main() {
     console.log("Deploying Contracts with the account:", deployer.address);
     console.log("Account Balance:", (await deployer.getBalance()).toString());
 
+    if (!hardhatArguments.network) {
+        throw new Error("please pass --network");
+    }
     await deploy(hardhatArguments.network);
 }
-
-async function deploy(network) {
+function sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function deploy(network: string) {
     const Registration = await ethers.getContractFactory("Registration");
     const imx_address = getIMXAddress(network);
     const asset = await Registration.deploy(imx_address);
     console.log("Deployed Contract Address:", asset.address);
-    fs.writeFileSync(`registration-${hardhatArguments.network}-address.txt`, asset.address);
+    console.log('Verifying contract in 60 seconds...');
+    await sleep(60000);
+    await run("verify:verify", {
+        address: asset.address,
+        constructorArguments: [
+            imx_address
+        ],
+    });
 }
 
-function getIMXAddress(network) {
+function getIMXAddress(network: string) {
     switch (network) {
+        case 'dev':
+            return '0xEce6b7086134AE8894Af10Ae540473dF619b5469';
         case 'ropsten':
             return '0x4527be8f31e2ebfbef4fcaddb5a17447b27d2aef';
         case 'mainnet':
