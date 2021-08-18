@@ -22,7 +22,7 @@ contract Registration {
         // but the Solidity compiler hates the overloading of deposit + the use of .value()
         (bool success, ) = address(imx).call{value: msg.value}(
             abi.encodeWithSignature(
-                "deposit(uint256,uint256,uin256)",
+                "deposit(uint256,uint256,uint256)",
                 starkKey,
                 assetType,
                 vaultId
@@ -97,6 +97,17 @@ contract Registration {
     ) external {
         imx.registerUser(ethKey, starkKey, signature);
         imx.withdrawNftTo(starkKey, assetType, tokenId, recipient);
+    }
+
+    function regsiterAndWithdrawAndMint(
+        address ethKey,
+        uint256 starkKey,
+        bytes calldata signature,
+        uint256 assetType,
+        bytes calldata mintingBlob
+    ) external {
+        imx.registerUser(ethKey, starkKey, signature);
+        imx.withdrawAndMint(starkKey, assetType, mintingBlob);
     }
 
     function isRegistered(uint256 starkKey) public view returns (bool) {
