@@ -99,6 +99,17 @@ contract Registration {
         imx.withdrawNftTo(starkKey, assetType, tokenId, recipient);
     }
 
+    function regsiterAndWithdrawAndMint(
+        address ethKey,
+        uint256 starkKey,
+        bytes calldata signature,
+        uint256 assetType,
+        bytes calldata mintingBlob
+    ) external {
+        imx.registerUser(ethKey, starkKey, signature);
+        imx.withdrawAndMint(starkKey, assetType, mintingBlob);
+    }
+
     function isRegistered(uint256 starkKey) public view returns (bool) {
         return imx.getEthKey(starkKey) != address(0);
     }
