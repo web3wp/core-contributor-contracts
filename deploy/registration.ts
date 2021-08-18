@@ -20,8 +20,8 @@ async function deploy(network: string) {
     const imx_address = getIMXAddress(network);
     const asset = await Registration.deploy(imx_address);
     console.log("Deployed Contract Address:", asset.address);
-    console.log('Verifying contract in 60 seconds...');
-    await sleep(60000);
+    console.log('Verifying contract in 5 minutes...');
+    await sleep(60000 * 5);
     await run("verify:verify", {
         address: asset.address,
         constructorArguments: [
