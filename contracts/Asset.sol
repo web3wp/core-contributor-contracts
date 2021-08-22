@@ -15,7 +15,7 @@ contract Asset is ERC721, Mintable {
     function _mintFor(
         address to,
         uint256 id,
-        bytes calldata
+        bytes memory
     ) internal override {
         _safeMint(to, id);
     }
