@@ -3,6 +3,7 @@ pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./IMintable.sol";
+import "./utils/Minting.sol";
 
 abstract contract Mintable is Ownable, IMintable {
     address public imx;
@@ -22,18 +23,20 @@ abstract contract Mintable is Ownable, IMintable {
     }
 
     function mintFor(
-        address to,
-        uint256 id,
-        bytes calldata blueprint
+        address user,
+        uint256 quantity,
+        bytes calldata mintingBlob
     ) external override onlyIMX {
-        _mintFor(to, id, blueprint);
+        require(quantity == 1, "Mintable: invalid quantity");
+        (uint256 id, bytes memory blueprint) = Minting.split(mintingBlob);
+        _mintFor(user, id, blueprint);
         blueprints[id] = blueprint;
-        emit AssetMinted(to, id, blueprint);
+        emit AssetMinted(user, id, blueprint);
     }
 
     function _mintFor(
         address to,
         uint256 id,
-        bytes calldata blueprint
+        bytes memory blueprint
     ) internal virtual;
 }
