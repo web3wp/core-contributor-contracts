@@ -5,6 +5,6 @@ interface IMintable {
     function mintFor(
         address to,
         uint256 id,
-        bytes memory blueprint
+        bytes calldata blueprint
     ) external;
 }

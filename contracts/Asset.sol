@@ -13,10 +13,10 @@ contract Asset is ERC721, Mintable {
     ) ERC721(_name, _symbol) Mintable(_owner, _imx) {}
 
     function _mintFor(
-        address to,
+        address user,
         uint256 id,
         bytes memory
     ) internal override {
-        _safeMint(to, id);
+        _safeMint(user, id);
     }
 }

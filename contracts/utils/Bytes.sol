@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-library String {
+library Bytes {
     /**
      * @dev Converts a `uint256` to a `string`.
      * via OraclizeAPI - MIT licence
@@ -46,17 +46,16 @@ library String {
      *             in the case of no matches found
      */
     function indexOf(
-        string memory _base,
+        bytes memory _base,
         string memory _value,
         uint256 _offset
     ) internal pure returns (int256) {
-        bytes memory _baseBytes = bytes(_base);
         bytes memory _valueBytes = bytes(_value);
 
         assert(_valueBytes.length == 1);
 
-        for (uint256 i = _offset; i < _baseBytes.length; i++) {
-            if (_baseBytes[i] == _valueBytes[0]) {
+        for (uint256 i = _offset; i < _base.length; i++) {
+            if (_base[i] == _valueBytes[0]) {
                 return int256(i);
             }
         }
@@ -76,8 +75,7 @@ library String {
         return string(result);
     }
 
-    function toUint(string memory s) internal pure returns (uint256) {
-        bytes memory b = bytes(s);
+    function toUint(bytes memory b) internal pure returns (uint256) {
         uint256 result = 0;
         for (uint256 i = 0; i < b.length; i++) {
             uint256 val = uint256(uint8(b[i]));
