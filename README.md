@@ -63,6 +63,20 @@ contract YourContract is IMintable, Ownable {
 }
 ```
 
+### Deploying and verifying registration contract
+
+Deploy to ropsten, change to dev/mainnet if required
+
+```
+yarn deploy-registration --network ropsten
+```
+
+If validation fails you can run it manually, eg
+
+```
+yarn hardhat verify --network mainnet 0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c 0x5FDCCA53617f4d2b9134B29090C87D01058e27e9
+```
+
 ### Generating Typescript Types
 
 Run `yarn compile`. The output can be found in the `artifacts/typechain` folder.
