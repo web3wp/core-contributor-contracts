@@ -38,8 +38,8 @@ contract YourContract is Mintable {
 
     function _mintFor(
         address to,
-        uint256 id,
-        bytes calldata blueprint
+        uint256 quantity,
+        bytes calldata mintingBlob
     ) internal override {
         // TODO: mint the token using your existing implementation
     }
