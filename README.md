@@ -61,8 +61,8 @@ contract YourContract is IMintable, Ownable {
 
     function mintFor(
         address to,
-        uint256 id,
-        bytes calldata blueprint
+        uint256 quantity,
+        bytes calldata mintingBlob
     ) external override {
         // TODO: make sure only Immutable X can call this function
         // TODO: mint the token!
