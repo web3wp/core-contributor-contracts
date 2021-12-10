@@ -23,7 +23,7 @@ contract ProxyRegistry {
   mapping(address => OwnableDelegateProxy) public proxies;
 }
 
-contract WordPressNFT is ERC721, Mintable {
+contract WPCoreContributorNFT is ERC721, Mintable {
 
     //New Marketplace royalty standard
     bytes4 private constant _INTERFACE_ID_ERC2981 = 0x2a55205a;
